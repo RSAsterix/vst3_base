@@ -3566,10 +3566,12 @@ bool String::fromVariant (const FVariant& var)
 
 		case FVariant::kObject:
 			if (auto string = ICast<Steinberg::IString> (var.getObject ()))
+			{
 				if (string->isWideString ())
 					assign (string->getText16 ());
 				else
 					assign (string->getText8 ());
+			}
 			return true;
 
 		default:
