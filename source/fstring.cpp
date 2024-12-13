@@ -3378,9 +3378,9 @@ String& String::printFloat (double value, uint32 maxPrecision)
 	// trim trail zeros
 	for (int32 i = length () - 1; i >= 0; i--)
 	{
-		if (isWide && testChar16 (i, '0') || testChar8 (i, '0'))
+		if ((isWide && testChar16 (i, '0')) || testChar8 (i, '0'))
 			remove (i);
-		else if (isWide && testChar16(i,'.') || testChar8(i, '.'))
+		else if ((isWide && testChar16(i,'.')) || testChar8(i, '.'))
 		{
 			remove(i);
 			break;
