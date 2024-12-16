@@ -63,14 +63,24 @@ bool AmIBeingDebugged ();
 //-----------------------------------------------------------------------------
 // development / release
 //-----------------------------------------------------------------------------
-#if !defined (DEVELOPMENT) && !defined (RELEASE) 
-	#ifdef _DEBUG
+#ifdef _DEBUG
+	#ifndef DEVELOPMENT
 		#define DEVELOPMENT 1
-	#elif defined (NDEBUG)
-		#define RELEASE 1
-	#else
-		#error DEVELOPMENT, RELEASE, _DEBUG, or NDEBUG  must be defined!
 	#endif
+	#ifndef RELEASE
+		#define RELEASE 0
+	#endif
+#else
+	#ifndef DEVELOPMENT
+		#define DEVELOPMENT 0
+	#endif
+	#ifndef RELEASE
+		#define RELEASE 1
+	#endif
+#endif
+
+#if !defined (DEVELOPMENT) && !defined (RELEASE)
+	#error DEVELOPMENT, RELEASE, _DEBUG, or NDEBUG  must be defined!
 #endif
 
 //-----------------------------------------------------------------------------

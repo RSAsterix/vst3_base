@@ -42,6 +42,7 @@
 //----------------------------------------------------------------------------------
 #pragma once
 
+#include "base/source/fdebug.h"
 #include "pluginterfaces/base/ftypes.h"
 
 #if SMTG_PTHREADS 
